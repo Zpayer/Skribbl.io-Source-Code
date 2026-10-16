@@ -1,100 +1,7 @@
 <!DOCTYPE html>
 <html data-theme="">
-    <script>
-        var aiptag = aiptag || {};
-        aiptag.cmd = aiptag.cmd || [];
-        aiptag.cmd.display = aiptag.cmd.display || [];
-        aiptag.cmd.player = aiptag.cmd.player || [];
-        aiptag.gdprShowConsentTool = true;
-        aiptag.gdprAlternativeConsentTool = false;
-        aiptag.cmp = {
-            show: true,
-            position: "centered",
-            button: false
-        };
-
-        function addPrivacySettingsButton() {
-            var ps = document.createElement("a");
-            ps.textContent = "Privacy Settings";
-            ps.href = "javascript:void(0)";
-            ps.onclick = function() {
-                aipAPItag.showCMPScreen()
-            }
-            ;
-            document.querySelector("#home .tos").appendChild(ps);
-        }
-
-        function gads() {
-            if (window.gads_loaded)
-                return;
-            window.gads_loaded = true;
-            var element = document.createElement('script');
-            var firstScript = document.getElementsByTagName('script')[0];
-            var url = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-            element.async = true;
-            element.type = 'text/javascript';
-            element.src = url;
-            firstScript.parentNode.insertBefore(element, firstScript);
-
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-9486091533756129",
-                enable_page_level_ads: (window.innerHeight < window.innerWidth),
-                overlays: {
-                    bottom: true
-                }
-            });
-
-            console.log("gads loaded.");
-        }
-        function gao() {
-            if (window.gao_loaded)
-                return;
-            window.gao_loaded = true;
-            var element = document.createElement('script');
-            var firstScript = document.getElementsByTagName('script')[0];
-            var url = "https://www.googletagmanager.com/gtag/js?id=G-YB9N45W3N0";
-            element.async = true;
-            element.type = 'text/javascript';
-            element.src = url;
-            firstScript.parentNode.insertBefore(element, firstScript);
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'G-YB9N45W3N0');
-            console.log("gao loaded.");
-        }
-        document.addEventListener("aip_consent", function() {
-            console.log("consent", arguments);
-            gads();
-            gao();
-        });
-        document.addEventListener("aip_consentapproved", function() {
-            console.log("consent_approved", arguments);
-            gads();
-            gao();
-        });
-        document.addEventListener("aip_consentrejected", function() {
-            console.log("consent_rejected", arguments);
-        });
-        document.addEventListener("aip_consentnotrequired", function() {
-            console.log("consent_not_required", arguments);
-            if (window == window.parent) {
-                gao();
-                gads();
-            }
-        });
-        window.addEventListener("load", function() {
-            addPrivacySettingsButton()
-            setTimeout(function() {
-                gads();
-                gao();
-            }, 1500);
-        });
-    </script>
-    <script async src="//api.adinplay.com/libs/aiptag/pub/SKR/skribbl.io/tag.min.js"></script>
     <head>
+        <script async src="//api.adinplay.com/libs/aiptag/pub/SKR/skribbl.io/tag.min.js"></script>
         <title>skribbl - Free Multiplayer Drawing &amp;Guessing Game</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -170,12 +77,14 @@
                     </div>
                     <div class="avatar-customizer">
                         <div class="arrows left">
+                            <div class="arrow left" data-avatar-index="3"></div>
                             <div class="arrow left" data-avatar-index="1"></div>
                             <div class="arrow left" data-avatar-index="2"></div>
                             <div class="arrow left" data-avatar-index="0"></div>
                         </div>
                         <div class="container"></div>
                         <div class="arrows right">
+                            <div class="arrow right" data-avatar-index="3"></div>
                             <div class="arrow right" data-avatar-index="1"></div>
                             <div class="arrow right" data-avatar-index="2"></div>
                             <div class="arrow right" data-avatar-index="0"></div>
@@ -710,7 +619,6 @@
                 </div>
             </div>
         </div>
-        <script src="js/socket.io.js"></script>
-        <script src="js/game.js"></script>
+        <script type="module" src="/src/main.js"></script>
     </body>
 </html>

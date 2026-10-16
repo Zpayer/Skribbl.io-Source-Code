@@ -1,8 +1,25 @@
 {
+  "name": "skribbl-io-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Skribbl.io game server with a Vite-based client",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "start": "vite build && node server.js",
+    "test": "node test/smoke.js"
+  },
   "dependencies": {
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
+    "socket.io": "^4.8.4",
+    "socket.io-client": "^4.8.1",
     "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
   }
 }
